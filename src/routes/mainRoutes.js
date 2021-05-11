@@ -19,7 +19,7 @@ const mainRoutes = [
   {
     name: "",
     path: "/movies/:muvieId",
-    exact: false,
+    exact: true,
     component: MovieDetailsPage,
   },
 ];

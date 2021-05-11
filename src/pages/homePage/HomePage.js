@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { NavLink, Route } from "react-router-dom";
+import { NavLink,  } from "react-router-dom";
 // import MovieDetailsPage from "../movieDetailsPage/MovieDetailsPage";
 // https://api.themoviedb.org/3/movie/460465/external_ids?api_key=3c3f31939cc89ca41e272b4d5922ad13
 const URL = `https://api.themoviedb.org`;
