@@ -1,26 +1,31 @@
-import HomePage from "../pages/homePage/HomePage";
-import MovieDetailsPage from "../pages/movieDetailsPage/MovieDetailsPage";
-
-import MoviesPage from "../pages/moviesPage/MoviesPage";
+import { lazy } from "react";
 
 const mainRoutes = [
   {
     name: "Home",
     path: "/",
     exact: true,
-    component: HomePage,
+    component: lazy(() =>
+      import("../pages/homePage/HomePage" /*webpackChunkName:'HomePages'*/)
+    ),
   },
   {
     name: "Movies",
     path: "/movies",
     exact: true,
-    component: MoviesPage,
+    component: lazy(() =>
+      import("../pages/moviesPage/MoviesPage" /*webpackChunkName:'HomePages'*/)
+    ),
   },
   {
     name: "",
-    path: "/movies/:muvieId",
-    exact: true,
-    component: MovieDetailsPage,
+    path: "/movies/:movieId",
+    exact: false,
+    component: lazy(() =>
+      import(
+        "../pages/movieDetailsPage/MovieDetailsPage" /*webpackChunkName:'HomePages'*/
+      )
+    ),
   },
 ];
 export default mainRoutes;
