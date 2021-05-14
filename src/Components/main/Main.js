@@ -8,7 +8,7 @@ const Main = () => {
     <>
       <Suspense fallback={<Loader />}>
         <Switch>
-          {mainRoutes.map((route) => (
+          {mainRoutes.map(route => (
             <Route
               path={route.path}
               exact={route.exact}

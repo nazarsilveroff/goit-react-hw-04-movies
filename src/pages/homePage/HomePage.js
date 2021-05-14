@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 const URL = `https://api.themoviedb.org`;
 const API = `3c3f31939cc89ca41e272b4d5922ad13`;
 class HomePage extends Component {
@@ -32,4 +32,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

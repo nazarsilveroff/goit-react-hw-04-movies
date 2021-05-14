@@ -16,19 +16,19 @@ class Reviews extends Component {
   }
     render() {
         const { review } = this.state;
-        return review && (
-          <>
-            <ul>
-              {review.map((item) => (
-                <li>
-                  <p>{item.author}</p>
-                  <p>{item.content}</p>
-                </li>
-              ))}
-            </ul>
-          </>
-        ) && (
-          <strong>We don`t have eny reviws for this move</strong>
+        return (
+          review && (
+            <>
+              <ul>
+                {review.map(item => (
+                  <li key={item.id}>
+                    <p>{item.author}</p>
+                    <p>{item.content}</p>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) && <strong>We don`t have eny reviws for this move</strong>
         );
   }
 }

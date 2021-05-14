@@ -11,9 +11,14 @@ class MoviesPage extends Component {
   };
 
   componentDidMount() {
-    const queryString = this.retrieveQuery() || "";
-    if (queryString.length !== 0) {
-      this.setState({ input: queryString }, this.searchMove);
+    // const queryString = this.retrieveQuery() || "";
+    // if (queryString.length !== 0) {
+    //   this.setState({ input: queryString }, this.searchMove);
+    // }
+    const { search } = this.props.location;
+    const str = search.replace('?query=', '').trim();
+    if (search.length !== 0 ) {
+       this.setState({ input: str }, this.searchMove);
     }
   }
 
@@ -25,9 +30,10 @@ class MoviesPage extends Component {
 
   searchMove = async () => {
     const { input } = this.state;
+    const { search } = this.props.location;
     try {
       const { data } = await axios.get(
-        `${URL}/3/search/movie/?query=${input}&api_key=${API}`
+        `${URL}/3/search/movie${search}&api_key=${API}`,
       );
       this.setState({ movies: data.results });
     } catch (error) {}
@@ -36,17 +42,18 @@ class MoviesPage extends Component {
   handleChange = (e) => {
     this.setState({ input: e.target.value });
   };
+  
   handleSumbmit = (e) => {
     e.preventDefault();
-    const qweryParams = new URLSearchParams();
-    qweryParams.set("query", this.state.input);
-    this.props.history.push({ search: qweryParams.toString() });
+    // const qweryParams = new URLSearchParams();
+    // qweryParams.set("query", this.state.input);
+    this.props.history.push({ search: `query=${this.state.input}` });
   };
 
-  retrieveQuery = () => {
-    const qweryParams = new URLSearchParams(this.props.location.search);
-    return qweryParams.get("query");
-  };
+  // retrieveQuery = () => {
+  //   const qweryParams = new URLSearchParams(this.props.location.search);
+  //   return qweryParams.get("query");
+  // };
 
   render() {
     const { movies } = this.state;
@@ -65,7 +72,8 @@ class MoviesPage extends Component {
         <ul>
           {movies.map((movie) => (
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+              <Link to={`/movies/${movie.id}`}
+              >{movie.title}</Link>
             </li>
           ))}
         </ul>
