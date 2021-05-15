@@ -20,8 +20,10 @@ body {
   background-color: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-background: rgb(168,86,162);
-background: linear-gradient(90deg, rgba(168,86,162,1) 0%, rgba(245,59,59,0.7595413165266106) 50%, rgba(242,216,62,0.35898109243697474) 100%);
+/* background: rgb(168,86,162);
+background: linear-gradient(90deg, rgba(168,86,162,1) 0%, rgba(245,59,59,0.7595413165266106) 50%, rgba(242,216,62,0.35898109243697474) 100%); */
+background: rgb(120,59,116);
+background: linear-gradient(90deg, rgba(120,59,116,0.31976540616246496) 0%, rgba(156,49,49,0.3169642857142857) 50%, rgba(238,210,43,0.25253851540616246) 100%);
 }
 
 img {
