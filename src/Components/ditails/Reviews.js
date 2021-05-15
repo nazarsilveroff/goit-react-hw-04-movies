@@ -31,9 +31,9 @@ class Reviews extends Component {
             ))}
           </ul>
         ) : (
-          <strong className="Sore">
-            We don`t have eny reviws for this move
-          </strong>
+          <div className="Sore">
+            <strong >We don`t have eny reviws for this move</strong>
+          </div>
         )}
       </ReviewContainer>
     );

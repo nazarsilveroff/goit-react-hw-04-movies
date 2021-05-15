@@ -1,26 +1,26 @@
 import styled from 'styled-components';
 export const MovieDetailsPageWrapper = styled.div`
   .buttonBack {
+    top: 0;
+    left: 0;
+    position: sticky;
+    z-index: 1100;
     font-weight: bolder;
     font-size: 25px;
     cursor: pointer;
     width: 100%;
     padding: 10px 0;
     border-color: transparent;
-    color: #2c2c2c;
+    color: #000000;
     transition: all 150ms ease-in-out;
-    background: rgb(168, 86, 162);
-    background: radial-gradient(
-      circle,
-      rgba(168, 86, 162, 0.31976540616246496) 0%,
-      rgba(245, 59, 59, 0.3169642857142857) 50%,
-      rgba(238, 210, 43, 0.25253851540616246) 100%
-    );
+    background-color: rgba(253, 227, 155, 0.699);
+    /* box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); */
   }
   .buttonBack:hover {
     transition: all 150ms ease-in-out;
-    font-size: 30px;
-    color: #ffe600;
+    font-size: 40px;
+    color: #ffffff;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
   }
@@ -43,7 +43,6 @@ export const MovieDetailsPageWrapper = styled.div`
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
     .poster {
-      
     }
     .userScore {
       font-weight: bolder;

@@ -47,5 +47,11 @@ export const ReviewContainer = styled.div`
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 6px 1px -1px rgba(0, 0, 0, 0.12);
   }
   .Sore {
+    text-align: center;
+    width: 100%;
+    padding: 100px;
+    strong {
+      font-size: 40px;
+    }
   }
 `;

@@ -15,6 +15,7 @@ export const NavigationContainer = styled.nav`
   }
 
   .link {
+    color:gray;
     text-decoration: none;
     text-transform: uppercase;
   }
