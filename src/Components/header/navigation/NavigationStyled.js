@@ -1,25 +1,28 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const NavigationContainer = styled.nav`
-.list{
-list-style: none;
-display: flex;
-align-items: center;
-margin-right:- 30px;
-}
+  font-weight: 400;
+  font-size: 25px;
+  .list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin-right: -30px;
+  }
 
-.listItem{
-margin-right: 30px;
-}
+  .listItem {
+    margin-right: 30px;
+  }
 
-.link{
+  .link {
     text-decoration: none;
     text-transform: uppercase;
+  }
+  .activeLink {
     color: salmon;
-
-}
-.activeLink{
-  color: blue;  
-}
-
-`
+    border-bottom: 3px solid salmon;
+  }
+  .link:hover {
+    border-bottom: 3px solid salmon;
+  }
+`;

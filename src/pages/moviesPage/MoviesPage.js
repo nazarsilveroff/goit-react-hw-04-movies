@@ -1,24 +1,21 @@
-import axios from "axios";
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import axios from 'axios';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { MoviesPageContainer } from './MoviesPageStyled';
 
 const URL = `https://api.themoviedb.org`;
 const API = `3c3f31939cc89ca41e272b4d5922ad13`;
 class MoviesPage extends Component {
   state = {
-    input: "",
+    input: '',
     movies: [],
   };
 
   componentDidMount() {
-    // const queryString = this.retrieveQuery() || "";
-    // if (queryString.length !== 0) {
-    //   this.setState({ input: queryString }, this.searchMove);
-    // }
     const { search } = this.props.location;
-    const str = search.replace('?query=', '').trim();
-    if (search.length !== 0 ) {
-       this.setState({ input: str }, this.searchMove);
+    const searchStr = new URLSearchParams(search).get('query');
+    if (search.length !== 0) {
+      this.setState({ input: searchStr }, this.searchMove);
     }
   }
 
@@ -29,7 +26,6 @@ class MoviesPage extends Component {
   }
 
   searchMove = async () => {
-    const { input } = this.state;
     const { search } = this.props.location;
     try {
       const { data } = await axios.get(
@@ -39,45 +35,53 @@ class MoviesPage extends Component {
     } catch (error) {}
   };
 
-  handleChange = (e) => {
-    this.setState({ input: e.target.value });
-  };
-  
-  handleSumbmit = (e) => {
+  handleChange = e => this.setState({ input: e.target.value });
+
+  handleSumbmit = e => {
     e.preventDefault();
-    // const qweryParams = new URLSearchParams();
-    // qweryParams.set("query", this.state.input);
     this.props.history.push({ search: `query=${this.state.input}` });
   };
 
-  // retrieveQuery = () => {
-  //   const qweryParams = new URLSearchParams(this.props.location.search);
-  //   return qweryParams.get("query");
-  // };
-
   render() {
-    const { movies } = this.state;
+    const { movies, input } = this.state;
     return (
-      <>
-        <form onSubmit={this.handleSumbmit}>
-          <label>
+      <MoviesPageContainer>
+        <header className="Searchbar">
+          <form className="SearchForm" onSubmit={this.handleSumbmit}>
+            <button type="submit" className="SearchForm-button">
+              <span className="SearchForm-button-label">Search</span>
+            </button>
+
             <input
-              type="text"
-              value={this.state.input}
               onChange={this.handleChange}
+              className="SearchForm-input"
+              type="text"
+              value={input}
+              placeholder="Search your movies"
             />
-            <button type="submit">FIND</button>
-          </label>
-        </form>
-        <ul>
-          {movies.map((movie) => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}
-              >{movie.title}</Link>
+          </form>
+        </header>
+        <ul className="ImageGallery">
+          {movies.map(movie => (
+            <li className="ImageGalleryItem" key={movie.id}>
+              <Link
+                className="ImageGalleryItem-link"
+                to={{
+                  pathname: `/movies/${movie.id}`,
+                  state: { from: `/movies`, input },
+                }}
+              >
+                <img
+                  className="ImageGalleryItem-image"
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <p>{movie.title}</p>
+              </Link>
             </li>
           ))}
         </ul>
-      </>
+      </MoviesPageContainer>
     );
   }
 }

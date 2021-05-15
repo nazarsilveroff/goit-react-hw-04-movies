@@ -3,7 +3,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import mainRoutes from "../../../routes/mainRoutes";
 import { NavigationContainer } from "./NavigationStyled";
 const Navigation = ({ location }) => {
-  console.log(`state: { from: location.pathname }-${location.pathname}`);
+
   return (
     <NavigationContainer>
       <ul className="list">

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
+import { CastContainer } from "./CastStyled";
 const URL = `https://api.themoviedb.org`;
 const API = `3c3f31939cc89ca41e272b4d5922ad13`;
 class Cast extends Component {
@@ -19,24 +20,29 @@ class Cast extends Component {
 
     return (
       cast && (
-        <>
-          <ul>
+        <CastContainer>
+          <ul className="ImageGallery">
             {cast?.map(
-              (item) =>
+              item =>
                 item.profile_path && (
-                  <li key={item.id}>
-                    <img
-                      width="100"
-                      src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-                      alt={item.original_name}
-                    />
-                    <p>{item.original_name}</p>
-                    <p>{item.character}</p>
+                  <li className="ImageGalleryItem" key={item.id}>
+                    <div className="ImageGalleryItem-link">
+                      <img
+                        className="ImageGalleryItem-image"
+                        width="100"
+                        src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
+                        alt={item.original_name}
+                      />
+                      <p>{item.original_name}</p>
+                      <p>
+                        <span>In the role:</span> {item.character}
+                      </p>
+                    </div>
                   </li>
-                )
+                ),
             )}
           </ul>
-        </>
+        </CastContainer>
       )
     );
   }
